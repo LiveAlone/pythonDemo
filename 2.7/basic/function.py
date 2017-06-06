@@ -68,4 +68,19 @@ def func(a, b, c=0, *args, **kw):
 # func(1, 2)
 # func(1, 2, c=3)
 # func(1, 2, 3, 'a', 'b')
-func(1, 2, 3, 'a', 'b', x=99)
+# func(1, 2, 3, 'a', 'b', x=99)
+kw = {'city': 'Beijing', 'job': 'Engineer'}
+func(1, 2, 3, *[1, 2, 3], **{'city': 'Beijing', 'job': 'Engineer'})
+
+
+# last difui function
+# def fact(n):
+#     if n == 1:
+#         return 1
+#     return n * fact(n - 1)
+#
+# print fact(100)
+# print fact(200)
+
+
+
