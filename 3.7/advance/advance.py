@@ -52,24 +52,47 @@ description: 切片操作
 # print [s.lower() for s in L]
 
 # generator 生成器， 没必要 List 类型的迭代
-print [x * x for x in range(10)]
-print (x * x for x in range(10))
-g = (x * x for x in range(10))
-print g.next()
-for x in g:
-    print x
+
+# print([x * x for x in range(10)])
+# g = (x * x for x in range(10))
+# print(next(g))
+# for x in g:
+#     print(x)
 
 
 # 通过 yield 方式 生成 迭代器
-def fib(max):
-    n, a, b = 0, 0, 1
-    while n < max:
-        yield b
-        a, b = b, a + b
-        n = n + 1
-    return 'done'
+# def fib(max):
+#     n, a, b = 0, 0, 1
+#     while n < max:
+#         yield b
+#         a, b = b, a + b
+#         n += 1
+#     return 'done'
+#
+#
+# f = fib(6)
+# for x in f:
+#     print(x)
 
+# iterable 提供支持 for 循环方式， iterator 不仅仅支持 for 循环， 支持 next() 方式
+# from collections import Iterable
+# from collections import Iterator
 
+# l = [x * x for x in range(10)]
+# g = (x * x for x in range(10))
+# print(g)
+# print(isinstance(g, Iterable))
+# print(isinstance(g, Iterator))
+# print(l)
+# print(isinstance(l, Iterable))
+# print(isinstance(l, Iterator))  # false
+#
+# print(next(g))
+# print(next(l))  # Error condition
+
+# iterable 转换成 iterator
+# print(isinstance(iter([]), Iterator))
+# print(isinstance(iter('abc'), Iterator))
 
 
 
