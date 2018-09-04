@@ -113,19 +113,25 @@ description: 函数式编程, 支持高阶函数方式
 
 # 修饰器 wrapper, 对应函数执行了一层封装
 #
+#
 # def log(func):
 #     def wrapper(*args, **kw):
 #         print('call %s():' % func.__name__)
 #         return func(*args, **kw)
 #     return wrapper
 #
+#
 # @log
 # def now():
 #     print('2015-3-25')
 #
+#
 # now()
+# print(now.__name__)
 
-#对应 修饰器的封装方式
+# 对应 修饰器的封装方式
+
+
 # def log(text):
 #     def decorator(func):
 #         def wrapper(*args, **kw):
@@ -134,12 +140,14 @@ description: 函数式编程, 支持高阶函数方式
 #         return wrapper
 #     return decorator
 #
+#
 # @log('execute')
 # def now():
 #     print('2015-3-25')
 #
 # # 类似方式 now = log('execute')(now)
-# # now()
+#
+# now()
 # print(now.__name__) # wrapper 方式
 
 # func wrapper
@@ -162,6 +170,9 @@ description: 函数式编程, 支持高阶函数方式
 # print(now.__name__) # 因为注解封装， 是 wrapper 方法 functions.wraps() 对应分装 __name__ 还是 now
 
 
+# import functools
+#
+#
 # def log(text):
 #     def decorator(func):
 #         @functools.wraps(func)
@@ -171,10 +182,13 @@ description: 函数式编程, 支持高阶函数方式
 #         return wrapper
 #     return decorator
 #
+#
 # @log('execute')
 # def now():
 #     print('2015-3-25')
 #
+#
+# # 通过 function tools 方式， 封装对应 func 执行， 返回原生函数的信息。
 # now()
 # print(now.__name__)
 
