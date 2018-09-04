@@ -5,5 +5,11 @@ __author__ = 'yaoqijun'
 __mail__ = 'yaoqijunmail@foxmail.com'
 
 '''
-description:  route handle 请求处理方式
+description: 
 '''
+
+configs = {
+    'db': {
+        'host': '127.0.0.1'
+    }
+}

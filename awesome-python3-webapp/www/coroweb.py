@@ -176,6 +176,7 @@ def add_route(app, fn):
     app.router.add_route(method, path, RequestHandler(app, fn))
 
 
+# 定义对应 module fn， 对应的 app 的映射关系
 def add_routes(app, module_name):
     n = module_name.rfind('.')
     if n == (-1):
