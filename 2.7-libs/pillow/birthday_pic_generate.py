@@ -11,8 +11,8 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-NAME = u''
-AGE = 58
+NAME = u'这就是我的名字'
+AGE = 6
 
 
 def generate_birthday():
@@ -31,13 +31,35 @@ def generate_birthday():
     age_font = ImageFont.truetype('static/simple.ttf', 27)
     draw.text((age_x, 880), str(AGE), font=age_font, fill=(0, 0, 0))
 
-    # head image save
+    # head image 扣取中心的 image 图片方式
+    head_img = Image.open('static/head_image.jpg')
+    head_img_size = head_img.size
+    x_length = head_img_size[0]
+    y_length = head_img_size[1]
+
+    absolute_length = abs(x_length - y_length) // 2
+    if x_length < y_length:
+        head_img2 = head_img.crop((0, absolute_length, x_length,  absolute_length + x_length))
+    else:
+        head_img2 = head_img.crop((absolute_length, 0,  absolute_length + y_length, y_length))
+    head_img3 = head_img2.resize((210, 210))
+
+    # 中心园内切正方形 PX = 305, PY = 520, a = 140
+    # 因此圆中心 o(375, 590) , 半径 r = 105
+    # 放置到图片， (270, 485) 的开始位置
+    head_image_pim = head_img3.load()
+    pim = im.load()
+    for PX in range(0, 210):
+        for PY in range(0, 210):
+            if pow((PX - 105), 2) + pow((PY - 105), 2) < pow(105, 2):
+                if pim[270 + PX, 485 + PY] == (255, 255, 255, 255):
+                    pim[270 + PX, 485 + PY] = head_image_pim[PX, PY]
 
     im.save('static/bir_result.png')
 
 
 if __name__ == '__main__':
-    print 'start birthday generate'
+    # # print 'start birthday generate'
     generate_birthday()
-    print 'end birthday generate'
+    # print 'end birthday generate'
 

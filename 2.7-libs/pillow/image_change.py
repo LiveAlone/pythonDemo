@@ -32,5 +32,6 @@ def change_filter():
 
 
 if __name__ == '__main__':
-    change_filter()
+    # change_filter()
+    change_size()
 
