@@ -13,14 +13,18 @@ from PIL import ImageFont
 
 NAME = u'这就是我的名字'
 AGE = 6
+ORIGIN_IMAGE_PATH = 'static/bir_origin.png'     # 原始图片的路径
+BLOCK_TTF_PATH = 'static/block.ttf'
+SIMPLE_TTF_PATH = 'static/simple.ttf'
+HEAD_IMAGE_PATH = 'static/head_image.jpg'
 
 
 def generate_birthday():
-    im = Image.open('static/bir_origin.png')
+    im = Image.open(ORIGIN_IMAGE_PATH)
     draw = ImageDraw.Draw(im)
 
     # name generate
-    name_font = ImageFont.truetype('static/block.ttf', 30)
+    name_font = ImageFont.truetype(BLOCK_TTF_PATH, 30)
     draw.text((320, 743), NAME, font=name_font, fill=(0, 0, 0))
 
     # size block, startIndex:458, 466
@@ -28,11 +32,11 @@ def generate_birthday():
         age_x = 458
     else:
         age_x = 466
-    age_font = ImageFont.truetype('static/simple.ttf', 27)
+    age_font = ImageFont.truetype(SIMPLE_TTF_PATH, 27)
     draw.text((age_x, 880), str(AGE), font=age_font, fill=(0, 0, 0))
 
     # head image 扣取中心的 image 图片方式
-    head_img = Image.open('static/head_image.jpg')
+    head_img = Image.open(HEAD_IMAGE_PATH)
     head_img_size = head_img.size
     x_length = head_img_size[0]
     y_length = head_img_size[1]
@@ -59,7 +63,7 @@ def generate_birthday():
 
 
 if __name__ == '__main__':
-    # # print 'start birthday generate'
+    print 'start birthday generate'
     generate_birthday()
-    # print 'end birthday generate'
+    print 'end birthday generate'
 
