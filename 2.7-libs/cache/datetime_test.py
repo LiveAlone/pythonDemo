@@ -9,6 +9,7 @@ description:
 '''
 
 import datetime
+from dateutil.relativedelta import relativedelta
 
 
 def day_range_iter(begin_date, end_date):
@@ -21,10 +22,15 @@ def day_range_iter(begin_date, end_date):
 
 
 if __name__ == '__main__':
-    start_date = datetime.datetime(*(2018, 7, 1))
-    end_date = datetime.datetime(2018, 8, 1)
-    print(start_date.month)
+    # start_date = datetime.datetime(*(2018, 7, 1))
+    # end_date = datetime.datetime(2018, 8, 1)
+    # print(start_date.month)
     # dr_iter = day_range_iter(start_date, end_date)
     # for kd in dr_iter:
     #     print kd
+    # now_date_time = datetime.datetime(2018, 9, 19)
+    # before_date_time = datetime.datetime(2018, 9, 16)
+    # print (now_date_time - before_date_time).total_seconds()
+    print relativedelta(months=+2)
+    print (datetime.datetime.now() + relativedelta(months=-2))
 
