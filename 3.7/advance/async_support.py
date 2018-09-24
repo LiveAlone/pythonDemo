@@ -51,10 +51,12 @@ description: 支持异步调用函数方式, python async, await resources 等
 #
 #
 # # 获取EventLoop:
+# print("start main hello world")
 # loop = asyncio.get_event_loop()
 # # 执行coroutine
 # loop.run_until_complete(hello())
 # loop.close()
+# print("end main hello world")
 
 # # threading async异步等待, 可以看到执行都是当线程
 #
