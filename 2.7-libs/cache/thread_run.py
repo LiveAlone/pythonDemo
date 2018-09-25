@@ -9,13 +9,27 @@ description:
 '''
 
 import time
+import threading
 
 
-def thread_sleep():
-    for i in range(1, 10):
-        print i
+# 新线程执行的代码:
+def loop():
+    print('thread %s is running...' % threading.current_thread().name)
+    n = 0
+    while n < 5:
+        n += 1
+        print('thread %s >>> %s' % (threading.current_thread().name, n))
         time.sleep(1)
+    print('thread %s ended.' % threading.current_thread().name)
+
+
+def create_thread():
+    print('thread %s is running...' % threading.current_thread().name)
+    t = threading.Thread(target=loop, name='LoopThread')
+    t.start()
+    t.join()
+    print('thread %s ended.' % threading.current_thread().name)
 
 
 if __name__ == '__main__':
-    thread_sleep()
+    create_thread()
