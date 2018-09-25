@@ -27,16 +27,21 @@ def worker_process_fun(name):
     """
     while True:
         task = MSG_QUEUE.get()
+        if name % 2 == 0 and task > 80:
+            print 'worker-%s, pid: %s is error task %s' \
+                  % (str(name), os.getpid(), str(task))
+            # error raise 当前进程取消执行, 等待执行完成
+            raise RuntimeError()
         work_time = random.randint(1, 11)
         time.sleep(work_time)
         print 'worker-%s, pid: %s is finish the task %s with process time %s'\
-              % (name, os.getpid(), str(task), str(work_time))
+              % (str(name), os.getpid(), str(task), str(work_time))
 
 
 if __name__ == '__main__':
     p = Pool(10)
     for i in range(1, 11):
-        p.apply_async(func=worker_process_fun, args=(str(i)))
+        p.apply_async(func=worker_process_fun, args=(i, ))
     print 'Master to put task'
     for i in range(1, 100):
         MSG_QUEUE.put(i)
