@@ -36,6 +36,5 @@ def worker_process_fun(name):
 
 if __name__ == '__main__':
     p = Pool(10)
-    l = (x * 10 for x in range(1, 11))
-    print isinstance(l, Iterable)
-    print isinstance(l, Iterator)
+
+

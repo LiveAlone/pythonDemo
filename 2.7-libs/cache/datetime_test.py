@@ -9,6 +9,7 @@ description:
 '''
 
 import datetime
+import time
 from dateutil.relativedelta import relativedelta
 
 
@@ -31,6 +32,14 @@ if __name__ == '__main__':
     # now_date_time = datetime.datetime(2018, 9, 19)
     # before_date_time = datetime.datetime(2018, 9, 16)
     # print (now_date_time - before_date_time).total_seconds()
-    print relativedelta(months=+2)
-    print (datetime.datetime.now() + relativedelta(months=-2))
+    # print relativedelta(months=+2)
+    # print (datetime.datetime.now() + relativedelta(months=-2))
+    # print datetime.datetime.now()
+    # print datetime.datetime.now() + datetime.timedelta(days=-1) + datetime.timedelta(minutes=-1)
+    # ts = 1518158402
+    # time_array = time.localtime(ts)
+    # print datetime.datetime.now() - datetime.datetime.fromtimestamp(ts)
+    str = datetime.datetime.now().strftime('%Y-%m-%d')
+    date = datetime.datetime.strptime('2018-09-27', '%Y-%m-%d')
+    print str, date
 

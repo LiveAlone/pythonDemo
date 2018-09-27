@@ -36,7 +36,6 @@ def draw_block():
     img.save('static/test_lt.jpg')
 
 
-
 def draw_test_block():
     img = Image.open('static/bir_origin.png')
     pim = img.load()
@@ -44,7 +43,6 @@ def draw_test_block():
         for y in range(PY, PYE + 1):
             pim[x, y] = (0, 0, 0)
     img.save('static/bir_origin_test.png')
-
 
 
 if __name__ == '__main__':

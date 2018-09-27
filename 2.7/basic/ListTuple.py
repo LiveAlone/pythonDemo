@@ -6,8 +6,13 @@
 # print classmates[2]
 
 # tuple config
-t = (1, 2)
-print t
-t2 = ('a', 'b', ['A', 'B'])
-print t2[2][0]
-print t2[2][1]
+# t = (1, 2)
+# print t
+# t2 = ('a', 'b', ['A', 'B'])
+# print t2[2][0]
+# print t2[2][1]
+
+l = []
+l.append(1)
+l.append(2)
+print l
