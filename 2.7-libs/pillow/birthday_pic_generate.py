@@ -11,12 +11,12 @@ from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-NAME = u'这就是我的名字'
+NAME = u'Hi, 名'
 AGE = 6
-ORIGIN_IMAGE_PATH = 'static/bir_origin.png'     # 原始图片的路径
+ORIGIN_IMAGE_PATH = 'static/birth2.png'     # 原始图片的路径
 BLOCK_TTF_PATH = 'static/block.ttf'
 SIMPLE_TTF_PATH = 'static/simple.ttf'
-HEAD_IMAGE_PATH = 'static/head_image.jpg'
+HEAD_IMAGE_PATH = 'static/test.jpg'
 
 
 def generate_birthday():
@@ -24,8 +24,9 @@ def generate_birthday():
     draw = ImageDraw.Draw(im)
 
     # name generate
-    name_font = ImageFont.truetype(BLOCK_TTF_PATH, 30)
-    draw.text((320, 743), NAME, font=name_font, fill=(0, 0, 0))
+    name_font = ImageFont.truetype(BLOCK_TTF_PATH, 34)
+    start_x = max((im.size[0] - name_font.getsize(NAME)[0]) // 2, 0)
+    draw.text((start_x, 743), NAME, font=name_font, fill=(51, 51, 51))
 
     # size block, startIndex:458, 466
     if AGE >= 10:
@@ -56,7 +57,8 @@ def generate_birthday():
     for PX in range(0, 210):
         for PY in range(0, 210):
             if pow((PX - 105), 2) + pow((PY - 105), 2) < pow(105, 2):
-                if pim[270 + PX, 485 + PY] == (255, 255, 255, 255):
+                point = pim[270 + PX, 485 + PY]
+                if not (40 <= point[1] <= 120 and 70 <= point[2] <= 150):
                     pim[270 + PX, 485 + PY] = head_image_pim[PX, PY]
 
     im.save('static/bir_result.png')
