@@ -25,7 +25,6 @@ PXE = PX + a
 PYE = PY + a
 
 
-
 def draw_block():
     img = Image.open('static/test.jpg')
     # print img.size

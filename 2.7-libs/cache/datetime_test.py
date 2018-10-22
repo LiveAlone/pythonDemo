@@ -41,5 +41,6 @@ if __name__ == '__main__':
     # print datetime.datetime.now() - datetime.datetime.fromtimestamp(ts)
     str = datetime.datetime.now().strftime('%Y-%m-%d')
     date = datetime.datetime.strptime('2018-09-27', '%Y-%m-%d')
+    print int(time.mktime(date.timetuple())) * 1000
     print str, date
 
